@@ -1,0 +1,36 @@
+{% extends 'webkiosk/base.html' %}
+
+{% block pagetitle %}GrubFood - Order {{ order.id }}{% endblock %}
+
+{% block maincontent %}
+<h2>Order #{{ order.id }}</h2>
+
+<ul>
+  <li>Order Date: {{ order.orderdatetime }}</li>
+  <li>Payment Method: {{ order.paymentmode }}</li>
+  <li>Customer: {{ order.customer.firstname }} {{ order.customer.lastname }}</li>
+</ul>
+
+<h3>Order Transactions</h3>
+
+<table>
+  <tr>
+    <th>ITEM</th>
+    <th>QTY</th>
+    <th>PRICE</th>
+  </tr>
+  {% for orderitem in orderitemlist %}
+    <tr>
+      <td>{{ orderitem.food.name }}</td>
+      <td>{{ orderitem.quantity }}</td>
+      <td>{{ orderitem.food.price }}</td>
+    </tr>
+  {% endfor %}
+</table>
+
+<ul>
+  <li><a href="{% url 'webkiosk:order-update' order.id %}">Edit Item</a></li>
+  <li><a href="{% url 'webkiosk:order-delete' order.id %}">Delete Item</a></li>
+</ul>
+
+{% endblock %}

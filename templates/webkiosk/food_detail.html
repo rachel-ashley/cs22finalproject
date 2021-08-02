@@ -1,0 +1,18 @@
+{% extends 'webkiosk/base.html' %}
+
+{% block pagetitle %}GrubFood - {{ food.name }}{% endblock %}
+
+{% block maincontent %}
+<h2>{{ food.name }}</h2>
+
+<ul>
+  <li>Price: Php {{ food.price }}</li>
+  <li>Description: {{ food.description }}</li>
+</ul>
+
+<ul>
+  <li><a href="{% url 'webkiosk:food-update' food.id %}">Edit Item</a></li>
+  <li><a href="{% url 'webkiosk:food-delete' food.id %}">Delete Item</a></li>
+</ul>
+
+{% endblock %}

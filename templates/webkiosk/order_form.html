@@ -1,0 +1,23 @@
+{% extends 'webkiosk/base.html' %}
+
+{% block pagetitle %}GrubFood - Add or Edit Order{% endblock %}
+
+{% block maincontent %}
+<h2>add or edit order item</h2>
+
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_ul }}
+  <!-- {% for orderitem in orderitem %}
+    {{ orderitemform.as_ul }}
+  {% endfor %} -->
+  <input type="submit" value="Add Item">
+</form>
+
+<ul>
+  {% for message in messages %}
+    <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+
+{% endblock %}
